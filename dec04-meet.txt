@@ -1,0 +1,52 @@
+yolop is happening
+its ml based
+its better most of the time
+model takes up too much memory/time sometimes
+this is why we need classical
+more compact
+faster
+backup in case of errors
+if classical outperforms ml, that's awesome -- saves compute power
+
+work so far:
+in cv repo, in prev 2 years, some lane detection work has been done
+a classical cv model has been written up
+needs to be restarted since old model was not very good with some things
+lanes in comp are not reliable -- old model is not consistent with real life lanes
+code takes elements from prev years
+
+section for curve fitting (polynomial) is being "borrowed"
+filtering and image processing is being revamped
+
+the point: structure of old models is the same
+curve fitting is pretty consistent everywhere
+one changing variable is preproccessing for images -- this is the focus
+
+annanay is working on using saturations to filter white vs. yellow
+jason is playing with filter combos
+
+code:
+lane.py
+process_image function is point of interest
+draw_sliding_window_XXXXX uses histogram after image proc that finds where on a bw image there is a high density of white
+window is drawn on white
+curve fitting is used on sliding window
+highlight_all is an enigma
+detect_lanes combines process image and highlight all functions
+highlight all is histogram stuff
+warp reverts image to original form
+region of interest fcn gets trapezoid of region of interest
+edge detection, sobel filter (finds vert and horiz lines)
+
+images right now are not super clean
+nearby objects are also being detected
+we need to pick up only white lines using filters on opencv
+once final black and white image is obtained histogram stuff can be dealt with
+
+TODO: try to replicate other teams' pipelines and see if its better than what we have
+
+in current gc, word doc
+ignore 2020 and 2021
+check 2016-2021
+
+use venv and install opencv using pip on the venv
